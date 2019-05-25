@@ -1,0 +1,55 @@
+﻿@model Bootcamp4.Models.CvModel
+@{
+    ViewBag.Title = "CvOlustur";
+}
+
+@if (ViewBag.AdSoyad == null)
+{
+   
+
+   using (Html.BeginForm())
+    {
+
+        <label>Ad</label> <br />
+        @Html.TextBoxFor(x => x.Adi) <br /> <br />
+
+        <label>Soyad</label> <br />
+        @Html.TextBoxFor(x => x.Soyadi) <br /> <br />
+
+        <label>Yaş</label> <br />
+        @Html.TextBoxFor(x => x.Yasi) <br /> <br />
+
+        <label>Telefon</label> <br />
+        @Html.TextBoxFor(x => x.Telefonu) <br /> <br />
+
+        <label>Şehir</label> <br />
+        @Html.TextBoxFor(x => x.Sehri) <br /> <br />
+
+        <label>Adres</label> <br />
+        @Html.TextBoxFor(x => x.Adres) <br /> <br />
+
+        <label>Bilgisayar Bilgisi</label> <br />
+        @Html.TextBoxFor(x => x.BilgisayarBilgisi) <br /> <br />
+
+
+        <br /><input type="submit" /> <br />
+    }
+
+
+}
+else
+	{
+
+     <div style="width:300px;padding:10px;background-color:brown;color:white;">
+
+         Adınız : @ViewBag.AdSoyad <br />
+         Yaşınız : @ViewBag.Yas <br />
+         Telefonunuz : @ViewBag.Telefon <br />
+         Adresiniz : @ViewBag.Adres <br />
+         Bilgisayar Bilginiz : @ViewBag.Bilgisayar
+
+     </div>
+
+
+	            
+	}

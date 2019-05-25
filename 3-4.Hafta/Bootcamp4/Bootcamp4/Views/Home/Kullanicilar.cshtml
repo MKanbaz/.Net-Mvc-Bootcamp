@@ -1,0 +1,56 @@
+﻿@model List<Bootcamp4.Models.Kullanicilar>
+@{
+    ViewBag.Title = "Kullanicilar";
+}
+<br />
+    <table border="1">
+        <tr>
+            <td colspan="4">
+                <center style="font-weight:900;color:orangered">Model İle Listeleme</center>
+            </td>
+        </tr>
+        <tr>
+            <td>Adı</td>
+            <td>Telefon</td>
+            <td>Kullanıcı Adı</td>
+            <td>Şifre</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Adi</td>
+                <td>@item.Telefon</td>
+                <td>@item.KullaniciAdi</td>
+                <td>@item.Sifre</td>
+            </tr>
+        }
+
+    </table>
+
+<br />
+
+<table border="1">
+    <tr>
+        <td colspan="4">
+            <center style="font-weight:900;color:orangered">Viewbag İle Listeleme</center>
+        </td>
+    </tr>
+    <tr>
+        <td>Adı</td>
+        <td>Telefon</td>
+        <td>Kullanıcı Adı</td>
+        <td>Şifre</td>
+    </tr>
+
+    @foreach (var item in ViewBag.Data)
+    {
+        <tr>
+            <td>@item.Adi</td>
+            <td>@item.Telefon</td>
+            <td>@item.KullaniciAdi</td>
+            <td>@item.Sifre</td>
+        </tr>
+    }
+
+</table>

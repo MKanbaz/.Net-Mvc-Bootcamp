@@ -1,0 +1,48 @@
+﻿@model Bootcamp4.Models.Kullanicilar
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewdenControlleraVeriGonderme</title>
+</head>
+<body>
+    @if (ViewBag.KullaniciAdi == null)
+    {
+        
+        <div>
+            @using (Html.BeginForm())
+            {
+                <label>Kullanıcı Adı</label><br />
+
+                @Html.TextBoxFor(x => x.KullaniciAdi) <br />
+
+
+
+                <label>Şifre</label><br />
+
+                @Html.PasswordFor(x => x.Sifre) <br />
+
+
+
+                <br /><input type="submit" /> <br />
+            }
+        </div>
+    }
+    else
+    {
+
+<div style="width:300px;padding:10px;background-color:brown;color:white;">
+    Hoşgeldiniz, @ViewBag.KullaniciAdi
+</div>
+    }
+
+</body>
+</html>
+
+
