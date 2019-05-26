@@ -1,0 +1,29 @@
+﻿@model List<Bootcamp4.Models.Kitap>
+@{
+    ViewBag.Title = "Kitaplar";
+}
+<a class="btn btn-default" href="@Url.Action("KitapEkle","Home")">Kitap Ekle</a>
+<br />
+<table border="1" style="padding:10px">
+    <tr>
+        <td>ID</td>
+        <td>Kitap Adı</td>
+        <td>Sayfa Sayısı</td>
+        <td>Yazar Adı</td>
+        <td>İşlemler</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.ID</td>
+    <td>@item.KitapAdi</td>
+    <td>@item.SayfaSayisi</td>
+    <td>@item.YazarAdi</td>
+    <td>
+        <a href="KitapDuzenle/@item.ID" class="btn btn-warning">Düzenle</a>
+        <a href="KitapSil/@item.ID" class="btn btn-danger">Sil</a>
+    </td>
+</tr>
+    }
+</table>
+

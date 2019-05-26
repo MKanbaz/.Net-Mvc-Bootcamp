@@ -9,6 +9,7 @@ namespace Bootcamp4.Controllers
 {
     public class HomeController : Controller
     {
+        OrnekDbContext ctx = new OrnekDbContext();
         public ActionResult Index()
         {
             return View();
@@ -79,6 +80,65 @@ namespace Bootcamp4.Controllers
             ViewBag.Data = model.ToList();
 
             return View(model.ToList());
+        }
+
+
+        public ActionResult Kitaplar()
+        {
+            
+
+            var ktp = ctx.Kitaplar.ToList();
+            return View(ktp);
+        }
+
+
+        public ActionResult KitapEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult KitapEkle(Kitap ktp)
+        {
+            //Kitap kitap = new Kitap
+            //{
+            //    KitapAdi = ktp.KitapAdi,
+            //    SayfaSayisi = ktp.SayfaSayisi
+            //};
+
+            //ctx.Kitaplar.Add(kitap);
+            ctx.Kitaplar.Add(ktp);
+            ctx.SaveChanges();
+            return RedirectToAction("Kitaplar");
+        }
+
+        public ActionResult KitapDuzenle(int id)
+        {
+            var bul = ctx.Kitaplar.FirstOrDefault(x => x.ID == id);
+
+            return View(bul);
+        }
+
+        [HttpPost]
+        public ActionResult KitapDuzenle(Kitap model)
+        {
+            var bul = ctx.Kitaplar.FirstOrDefault(x => x.ID == model.ID);
+
+            bul.KitapAdi = model.KitapAdi;
+            bul.SayfaSayisi = model.SayfaSayisi;
+            bul.YazarAdi = model.YazarAdi;
+            ctx.SaveChanges();
+
+            return RedirectToAction("Kitaplar");
+        }
+
+        public ActionResult KitapSil(int id)
+        {
+            var bul = ctx.Kitaplar.FirstOrDefault(x=>x.ID == id);
+
+            ctx.Kitaplar.Remove(bul);
+            ctx.SaveChanges();
+            return RedirectToAction("Kitaplar");
         }
     }
 }

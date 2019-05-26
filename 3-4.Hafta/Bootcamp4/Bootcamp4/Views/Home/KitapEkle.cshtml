@@ -1,0 +1,26 @@
+﻿@model Bootcamp4.Models.Kitap
+@{
+    ViewBag.Title = "KitapEkle";
+}
+
+<h2>KitapEkle</h2>
+<br />
+@using (Html.BeginForm())
+{
+
+    <label>Kitap Adı</label><br />
+    @Html.TextBoxFor(x=>x.KitapAdi) <br />
+
+    <label>Sayfa Sayısı</label><br />
+    @Html.TextBoxFor(x=>x.SayfaSayisi) <br />
+
+    <label>Yazar Adı</label><br />
+    @Html.TextBoxFor(x=>x.YazarAdi)
+
+
+    <input type="submit" value="Gonder" class="btn btn-danger" />
+}
+
+
+
+
