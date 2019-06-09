@@ -1,0 +1,34 @@
+﻿@model HaftaCode.Models.Tablolarim.ilac
+@{
+    ViewBag.Title = "Düzenle";
+}
+<br />
+<div class="col-md-12">
+    <div class="col-md-5">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(x => x.Barkod)
+            <table class="table table-bordered">
+                <tr>
+                    <td>İlaç Adı </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.ilacadi)
+                    </td>
+                </tr>
+                <tr>
+                    <td>İlacın Son Kullanma Tarihi </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.SkTarihi)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Kaydet" /> </td>
+
+                </tr>
+            </table>
+
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@model HaftaCode.Models.Tablolarim.ilac
+@{
+    ViewBag.Title = "Ekle";
+}
+<br />
+<div class="col-md-12">
+    <div class="col-md-5">
+        @using (Html.BeginForm())
+        {
+        <table class="table table-bordered">
+            <tr>
+                <td>İlaç Adı </td>
+                <td>
+                    @Html.TextBoxFor(x => x.ilacadi)
+                </td>
+            </tr>
+            <tr>
+                <td>İlacın Son Kullanma Tarihi </td>
+                <td>
+                    @Html.TextBoxFor(x => x.SkTarihi)
+                </td>
+            </tr>
+            <tr>
+                <td>Firması </td>
+                <td>
+                    @Html.DropDownListFor(x => x.FirmaID,ViewBag.FirmalariListele as SelectList)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Kaydet" /> </td>
+
+            </tr>
+        </table>
+
+        }
+
+    </div>
+</div>
+

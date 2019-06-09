@@ -1,0 +1,48 @@
+﻿@model List<HaftaCode.Models.Tablolarim.ilac>
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<a href="@Url.Action("Ekle","Home")" class="btn btn-success">Ekle</a>
+<br />
+<h2>Model ile Veri Alımı</h2><br />
+<table class="table table-bordered">
+    <tr>
+        <td>Barkod</td>
+        <td>İlacın Adı</td>
+        <td>İlacın Son Kullanma Tarihi</td>
+        <td>Firması</td>
+        <td>İşlemler</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Barkod</td>
+            <td>@item.ilacadi</td>
+            <td>@item.SkTarihi</td>
+            <td>@item.Firmalar.FirmaAdi</td>
+            <td>
+                <a href="@Url.Action("Duzenle/"+item.Barkod,"Home")" class="btn btn-warning">Düzenle</a>
+                <a href="@Url.Action("Sil/"+item.Barkod,"Home")" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<h2>Viewbag ile Veri Alımı</h2><br />
+<table class="table table-bordered">
+    <tr>
+        <td>Barkod</td>
+        <td>İlacın Adı</td>
+        <td>İlacın Son Kullanma Tarihi</td>
+    </tr>
+    @foreach (var item in ViewBag.Listemiz)
+    {
+        <tr>
+            <td>@item.Barkod</td>
+            <td>@item.ilacadi</td>
+            <td>@item.SkTarihi</td>
+        </tr>
+    }
+</table>
