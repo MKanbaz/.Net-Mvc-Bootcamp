@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Metin";
+}
+
+<br />
+<br />
+
+<div class="row">
+    @*Hata Alanı*@
+    <div class="col-md-12" id="hata" style="background-color:brown;color:white;padding:7px;font-size:15px;margin-bottom:15px;display:none">
+        Dediğinizi anlamadım!
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-5">
+            <label>Soruyu Sor</label><br />
+            <input type="text" id="Soru" class="form-control" /><br />
+            <a class="btn btn-success" onclick="SorguyuYap()">Sor</a>
+        </div>
+
+        <div class="col-md-3"></div>
+
+    </div>
+    <div class="col-md-12" id="metininkendisi" style="margin-top:15px;height:auto;display:none">
+        <div class="col-md-5"></div>
+        <div class="col-md-4">
+            <img src="~/Content/metin.gif" width="100" />
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="col-md-12" id="cevap" style="background-color:chocolate;color:white;padding:8px;font-size:17px;margin-top:15px;height:100px">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function SorguyuYap() {
+        var soru = $("#Soru").val();
+          $.ajax({
+                url : '/Home/Sorgu/' + soru,
+                type:'POST',
+                dataType:'json',
+                success: function (data) {
+                    if (data == "Boş") {
+                        $("#hata").show();
+                        $("#metininkendisi").hide();
+                        $("#cevap").html("");
+                    }
+                    else {
+                        $("#metininkendisi").show();
+                         $("#hata").hide();
+                        $("#cevap").html(data)
+                    }
+                }
+            });
+    }
+</script>
